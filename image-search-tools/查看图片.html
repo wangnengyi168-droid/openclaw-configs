@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0405 - 项链相似款式</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #666;
+            font-size: 1.2em;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .image-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+        .image-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .image-info {
+            padding: 15px;
+            text-align: center;
+        }
+        .image-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        .image-meta {
+            font-size: 0.9em;
+            color: #666;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        .status-waiting {
+            background: #ffeb3b;
+            color: #333;
+        }
+        .status-completed {
+            background: #4caf50;
+            color: white;
+        }
+        .instructions {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 5px solid #667eea;
+        }
+        .instructions h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        .instructions ol {
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .empty-placeholder {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-style: italic;
+        }
+        .empty-placeholder i {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 0405 - 项链相似款式搜索</h1>
+            <p>基于Yandex反向图片搜索的相似款式收集</p>
+            <div class="status-badge status-waiting">等待上传图片</div>
+        </div>
+
+        <div class="image-grid" id="imageGrid">
+            <!-- 图片将动态加载 -->
+            <div class="empty-placeholder">
+                <div>📁</div>
+                <h3>等待图片上传</h3>
+                <p>请按照操作指南上传8张相似项链图片</p>
+                <p>图片将自动显示在这里</p>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>📋 操作指南</h3>
+            <ol>
+                <li><strong>打开Yandex图片搜索</strong>: https://yandex.com/images/</li>
+                <li><strong>上传源图片</strong>: 选择 <code>~/桌面/测试结果/源图_项链.png</code></li>
+                <li><strong>选择8张最相似的项链图片</strong> (按相似度排序)</li>
+                <li><strong>保存到本文件夹</strong> (<code>~/桌面/0405/</code>)</li>
+                <li><strong>命名规范</strong>:
+                    <ul>
+                        <li><code>necklace_1.jpg</code> (最相似)</li>
+                        <li><code>necklace_2.jpg</code></li>
+                        <li><code>necklace_3.jpg</code></li>
+                        <li>...</li>
+                        <li><code>necklace_8.jpg</code></li>
+                    </ul>
+                </li>
+            </ol>
+            
+            <h4>🎯 选择标准</h4>
+            <ul>
+                <li>✅ <strong>材质匹配</strong>: 白金/银色系优先</li>
+                <li>✅ <strong>款式匹配</strong>: 设计复杂度相似</li>
+                <li>✅ <strong>亮度匹配</strong>: 高亮度表面优先</li>
+                <li>✅ <strong>质量要求</strong>: 清晰、无水印、分辨率高</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>项目</strong>: 项链相似款式搜索 | <strong>日期</strong>: 2026-04-05</p>
+            <p><strong>方法</strong>: Yandex图片搜索 (手动) | <strong>目标</strong>: 8张相似图片</p>
+            <p><strong>技术支持</strong>: 总管 🐾 | <strong>状态</strong>: 进行中</p>
+        </div>
+    </div>
+
+    <script>
+        // 自动检测并显示图片
+        function checkAndDisplayImages() {
+            const imageGrid = document.getElementById('imageGrid');
+            const imageFiles = [
+                'necklace_1.jpg', 'necklace_2.jpg', 'necklace_3.jpg', 'necklace_4.jpg',
+                'necklace_5.jpg', 'necklace_6.jpg', 'necklace_7.jpg', 'necklace_8.jpg'
+            ];
+            
+            let foundImages = 0;
+            let html = '';
+            
+            imageFiles.forEach((filename, index) => {
+                // 检查文件是否存在 (通过尝试加载图片)
+                const img = new Image();
+                img.src = filename;
+                
+                img.onload = function() {
+                    // 图片存在
+                    foundImages++;
+                    
+                    // 更新对应位置的卡片
+                    const cardId = `card-${index + 1}`;
+                    let cardElement = document.getElementById(cardId);
+                    
+                    if (!cardElement) {
+                        // 创建新的卡片
+                        cardElement = document.createElement('div');
+                        cardElement.className = 'image-card';
+                        cardElement.id = cardId;
+                        imageGrid.appendChild(cardElement);
+                    }
+                    
+                    cardElement.innerHTML = `
+                        <img src="${filename}" alt="项链相似款 ${index + 1}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzY2NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5lY2tsYWNlICR7aW5kZXgrMX08L3RleHQ+PC9zdmc+'">
+                        <div class="image-info">
+                            <div class="image-title">项链相似款 ${index + 1}</div>
+                            <div class="image-meta">
+                                文件: ${filename}<br>
+                                状态: <span class="status-badge status-completed">已上传</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // 更新标题状态
+                    if (foundImages === 8) {
+                        document.querySelector('.header .status-badge').className = 'status-badge status-completed';
+                        document.querySelector('.header .status-badge').textContent = '已完成 (8/8)';
+                        document.querySelector('.header h1').innerHTML = '🎉 0405 - 项链相似款式搜索 (完成)';
+                    } else if (foundImages > 0) {
+                        document.querySelector('.header .status-badge').textContent = `进行中 (${foundImages}/8)`;
+                    }
+                };
+                
+                img.onerror = function() {
+                    // 图片不存在，显示占位符
+                    const cardId = `card-${index + 1}`;
+                    let cardElement = document.getElementById(cardId);
+                    
+                    if (!cardElement) {
+                        cardElement = document.createElement('div');
+                        cardElement.className = 'image-card';
+                        cardElement.id = cardId;
+                        imageGrid.appendChild(cardElement);
+                    }
+                    
+                    cardElement.innerHTML = `
+                        <div style="background: #f0f0f0; height: 200px; display: flex; align-items: center; justify-content: center;">
+                            <div style="text-align: center; color: #999;">
+                                <div style="font-size: 3em;">📁</div>
+                                <div>等待上传</div>
+                            </div>
+                        </div>
+                        <div class="image-info">
+                            <div class="image-title">项链相似款 ${index + 1}</div>
+                            <div class="image-meta">
+                                文件: ${filename}<br>
+                                状态: <span class="status-badge status-waiting">等待中</span>
+                            </div>
+                        </div>
+                    `;
+                };
+            });
+            
+            // 移除初始的空状态提示
+            const emptyPlaceholder = imageGrid.querySelector('.empty-placeholder');
+            if (emptyPlaceholder && foundImages > 0) {
+                emptyPlaceholder.style.display = 'none';
+            }
+        }
+        
+        // 初始检查
+        checkAndDisplayImages();
+        
+        // 每5秒自动检查一次
+        setInterval(checkAndDisplayImages, 5000);
+        
+        // 页面加载时检查
+        window.addEventListener('load', checkAndDisplayImages);
+        
+        // 添加拖放功能提示
+        document.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
+        
+        document.addEventListener('drop', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            alert('请使用"图片另存为"功能保存图片到本文件夹');
+        });
+    </script>
+</body>
+</html>
